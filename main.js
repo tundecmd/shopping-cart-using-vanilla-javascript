@@ -27,6 +27,8 @@ class Item {
 
 // LIST OF CART FUNCTIONS
 
+
+// ADDING addItemToCart() FUNCTION
 function addItemToCart(name, price, count) {
   for (var i in cart) {
     if ( cart[i].name === name ) {
@@ -37,16 +39,12 @@ function addItemToCart(name, price, count) {
   var item = new Item(name, price, count)
   cart.push(item);
 }
-addItemToCart('Apple', 1.22, 1);
-addItemToCart('Pear', 1.72, 3)
-addItemToCart('Apple', 1.22, 1);
-addItemToCart('Apple', 1.22, 3);
-console.log(cart);
 
 
 
 
 
+// ADDING removeItemFromCart() FUNCTION
 function removeItemFromCart(name) {
   //removes one item of a particular name
   for (var i in cart) {
@@ -59,20 +57,37 @@ function removeItemFromCart(name) {
     }
   }
 } 
-//console.log(cart);
-console.log(cart[0].count);
-removeItemFromCart('Apple')
-removeItemFromCart('Apple')
-removeItemFromCart('Apple')
-removeItemFromCart('Apple')
-removeItemFromCart('Apple')
-removeItemFromCart('Apple')
+
+// ADDING removeItemFromCartAll() FUNCTION
+function removeItemFromCartAll(name) {
+// -- removes all of item-name
+  for (var i in cart) {
+    if (cart[i].name === name) {
+      cart.splice(i, 1);
+      return;
+    }
+  }
+}
+
+addItemToCart('Apple', 1.22, 1);
+addItemToCart('Pear', 1.72, 3)
+addItemToCart('Apple', 1.22, 1);
+addItemToCart('Apple', 1.22, 3);
+addItemToCart('Pear', 1.72, 3)
+addItemToCart('Banana', 5.22, 1);
+addItemToCart('car', 34.22, 3);
+addItemToCart('Plush Toy', 5.82, 3)
+addItemToCart('Apple', 1.22, 1);
+addItemToCart('sticky notes', 4.00, 3);
+
+console.log(cart.length);
 console.log(cart);
 
+removeItemFromCartAll('car')
 
+console.log(cart.length);
+console.log(cart);
 
-
-//removeItemFromCartAll(name) -- removes all of item-name
 //clearCart() -- removes all the items from the cart
 //countCart() -- returns total count
 // totalCart() -- returns total cost
