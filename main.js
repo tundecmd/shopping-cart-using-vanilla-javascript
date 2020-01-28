@@ -1,13 +1,13 @@
-function myFunction(msg, count) {
-  for ( var i = 0; i < count; i ++) {
-    console.log(msg);
-  }
+// scope determines where you can see your value or variable witnin your program.
+
+var global = 10;
+
+function myFunction() {
+  var global = 'Hello from main.js';
+  console.log('global: ',global);
 }
 
-myFunction('ahhhhh!!!!!',6);
+myFunction()
 
-function square(num) {
-  return num * num
-}
 
-console.log(square(3));
+console.log('global: ',global);
