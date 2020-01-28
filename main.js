@@ -44,7 +44,7 @@ function addItemToCart(name, price, count) {
 
 
 
-// ADDING removeItemFromCart() FUNCTION
+// REMOVING ITEM FROM CART ONE AT A TIME
 function removeItemFromCart(name) {
   //removes one item of a particular name
   for (var i in cart) {
@@ -58,7 +58,7 @@ function removeItemFromCart(name) {
   }
 } 
 
-// ADDING removeItemFromCartAll() FUNCTION
+// REMOVING ALL ITEM OF A PARTICULAR NAME FROM THE CART 
 function removeItemFromCartAll(name) {
 // -- removes all of item-name
   for (var i in cart) {
@@ -69,16 +69,16 @@ function removeItemFromCartAll(name) {
   }
 }
 
-addItemToCart('Apple', 1.22, 1);
-addItemToCart('Pear', 1.72, 3)
-addItemToCart('Apple', 1.22, 1);
-addItemToCart('Apple', 1.22, 3);
-addItemToCart('Pear', 1.72, 3)
-addItemToCart('Banana', 5.22, 1);
-addItemToCart('car', 34.22, 3);
-addItemToCart('Plush Toy', 5.82, 3)
-addItemToCart('Apple', 1.22, 1);
-addItemToCart('sticky notes', 4.00, 3);
+addItemToCart('Apple', 1, 1);
+addItemToCart('Pear', 1, 1)
+addItemToCart('Apple', 1, 1);
+addItemToCart('Apple', 1, 3);
+addItemToCart('Pear', 1, 1)
+addItemToCart('Banana', 5, 1);
+addItemToCart('car', 3, 3);
+addItemToCart('Plush Toy', 5, 1)
+addItemToCart('Apple', 1, 1);
+addItemToCart('sticky notes', 5, 1);
 
 console.log(cart.length);
 console.log(cart);
@@ -88,7 +88,43 @@ removeItemFromCartAll('car')
 console.log(cart.length);
 console.log(cart);
 
-//clearCart() -- removes all the items from the cart
-//countCart() -- returns total count
+
+// CLEARING ALL ITEMS FROM THE CART
+function clearCart() {
+// clears all the items from the cart
+  cart = [];  
+}
+
+//clearCart();
+
+console.log(cart.length);
+console.log(cart);
+
+
+// COUNTING THE TOTAL ITEMS IN THE CART
+function countCart() {
+  //returns total count
+  totalCount = 0;
+  for (var i in cart) {
+    totalCount += cart[i].count;
+  }
+  return totalCount;
+}
+
+console.log(countCart());
+
+// GETTING THE TOTAL COST
+function totalCart() {
+  // returns total cost
+  var totalCost = 0;
+  for (var i in cart) {
+    totalCost += cart[i].price * cart[i].count;
+  }
+  return totalCost;
+}
+
+console.log(countCart());
+console.log(totalCart());
+
 // totalCart() -- returns total cost
 //listCart() -- array of items
