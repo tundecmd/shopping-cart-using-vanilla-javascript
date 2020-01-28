@@ -1,12 +1,7 @@
-var obj = { name: 'Apple', cost: 1.99, count: 2 }
-console.log(obj);
-console.log(obj.name);
-console.log(obj.cost);
+ var cart = [];
+ var item = { name:'Apple', cost: 1.99, count: 2 }
+ cart.push(item)
 
-for ( var key in obj ) {
-    console.log(key + ' ' + obj[key]);
-}
-var array = ['A', 'B', 'C']
-for ( key in array) {
-  console.log(key + ' ' + array[key]);
-}
+ console.log(cart);
+ console.log(cart[0]);
+ console.log(cart[0].name);
