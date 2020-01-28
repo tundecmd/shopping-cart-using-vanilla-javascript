@@ -1,18 +1,12 @@
-/*
-var array = ['Apple','Brush','Carrot']
-console.log(array.length);
-console.log(array);
-console.log(array[1]);
+var obj = { name: 'Apple', cost: 1.99, count: 2 }
+console.log(obj);
+console.log(obj.name);
+console.log(obj.cost);
 
-
-array.push('Dice')
-console.log(array.length);
-console.log(array);
-*/
-
-var array = ['Apple','Brush','Carrot']
-
-  array.push('Ducks')
-  for ( var i = 0; i < array.length; i ++) {
-      console.log(array[i])
-  }
+for ( var key in obj ) {
+    console.log(key + ' ' + obj[key]);
+}
+var array = ['A', 'B', 'C']
+for ( key in array) {
+  console.log(key + ' ' + array[key]);
+}
