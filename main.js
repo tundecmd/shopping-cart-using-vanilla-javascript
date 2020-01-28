@@ -1,7 +1,13 @@
- var cart = [];
- var item = { name:'Apple', cost: 1.99, count: 2 }
- cart.push(item)
+function myFunction(msg, count) {
+  for ( var i = 0; i < count; i ++) {
+    console.log(msg);
+  }
+}
 
- console.log(cart);
- console.log(cart[0]);
- console.log(cart[0].name);
+myFunction('ahhhhh!!!!!',6);
+
+function square(num) {
+  return num * num
+}
+
+console.log(square(3));
