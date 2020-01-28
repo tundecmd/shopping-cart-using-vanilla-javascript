@@ -47,7 +47,31 @@ console.log(cart);
 
 
 
-//removeItemFromCart(name) -- removes one item
+function removeItemFromCart(name) {
+  //removes one item of a particular name
+  for (var i in cart) {
+    if (cart[i].name === name) {
+      cart[i].count --; // cart[i].count = cart[i].count - 1 which can be shortened to cart[i].count -= 1
+      if (cart[i].count === 0) {
+        cart.splice(i, 1);
+      }
+      return;
+    }
+  }
+} 
+//console.log(cart);
+console.log(cart[0].count);
+removeItemFromCart('Apple')
+removeItemFromCart('Apple')
+removeItemFromCart('Apple')
+removeItemFromCart('Apple')
+removeItemFromCart('Apple')
+removeItemFromCart('Apple')
+console.log(cart);
+
+
+
+
 //removeItemFromCartAll(name) -- removes all of item-name
 //clearCart() -- removes all the items from the cart
 //countCart() -- returns total count
