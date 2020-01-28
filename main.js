@@ -126,5 +126,50 @@ function totalCart() {
 console.log(countCart());
 console.log(totalCart());
 
-// totalCart() -- returns total cost
-//listCart() -- array of items
+
+function listCart() {
+  //listCart() -- return array of items
+  var cartCopy = [];
+  for (var i in cart) {
+    var item = cart[i];
+    var itemCopy = {};
+      for (var p in itemCopy) {
+        itemCopy[p] = item[p];
+      }
+    cartCopy.push(itemCopy);
+  }
+  //return cartCopy
+  return cart.slice();
+}
+
+// ****************
+var array = listCart();
+array[0].name = 'Mistake';
+console.log(array)
+
+
+/* Reference types in javascript
+// some notes here
+var a = ['A','B','C'];
+var b = a
+b.push('D')
+console.log('a',a); 
+console.log('b',b);
+
+
+var a = ['A','B','C'];
+var b = a.slice()
+b.push('D')
+console.log('a',a); 
+console.log('b',b);
+
+var a = { age: 22, name: 'joe'};
+var b = a;
+b.name = 'cindy';
+console.log('a ', a);
+console.log('b ', b)
+
+*/
+
+// saveCart()
+// loadCart()
