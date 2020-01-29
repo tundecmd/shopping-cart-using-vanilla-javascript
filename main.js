@@ -12,16 +12,13 @@ $(".add-to-cart").click(function (event) {
 
 function displayCart() {
   var cartArray = listCart();
-  console.log('***Count Cart*** :', + cartArray.length);
   var output = "";
   for (var i in cartArray) {
     output += "<li>" + cartArray[i].name + " " + cartArray[i].count + "</li>"
   }
   $("#show-cart").html(output);
+  $("#total-cart").html(totalCart());
 }
-
-
-
 
 
 
@@ -63,6 +60,7 @@ function addItemToCart(name, price, count) {
   for (var i in cart) {
     if ( cart[i].name === name ) {
         cart[i].count += count;
+        saveCart();
         return;
     }
   }
