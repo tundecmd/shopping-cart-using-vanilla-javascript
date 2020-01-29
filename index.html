@@ -5,9 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Shopping Cart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
   <h1>Shopping Cart</h1>
+  <div>
+    <ul>
+      <li><a class='add-to-cart' href="#" data-name="Apple" data-price="1.22">Apple $1.22</a>
+      </li>
+      <li><a class='add-to-cart' href="#" data-name="Banana" data-price="1.33">Apple $1.33</a>
+      </li>
+      <li><a class='add-to-cart' href="#" data-name="Shoe" data-price="33.33">Apple $22.33</a>
+      </li>
+      <li><a class='add-to-cart' href="#" data-name="Frisbee" data-price="5.33">Apple $5.33</a>
+      </li>
+    </ul>
+    <button id = 'clear-cart'>Clear Cart</button?>
+  </div>
+  <div>
+    <ul id='show-cart'>
+      <!-- -->
+    </ul>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>

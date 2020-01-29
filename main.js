@@ -1,3 +1,31 @@
+//******************
+// JQUERY
+$(".add-to-cart").click(function (event) {
+    event.preventDefault();
+    var name = $(this).attr("data-name");
+    var price = Number($(this).attr("data-price"));
+
+    addItemToCart(name, price, 1)
+    displayCart();
+});
+
+function displayCart() {
+  var cartArray = listCart();
+  var output = "";
+  for (var i in cartArray) {
+    output += "<li>" + cartArray[i].name + " " + cartArray[i].count + "</li>"
+  }
+  $("#show-cart").html(output);
+}
+
+
+
+
+
+
+
+
+
 //general structure
 
 //var cart = [{name: 'Brush', price: '1.99', count: '1'}, {name, price, count},{name, price, count}];
@@ -98,8 +126,9 @@ function totalCart() {
 
 // GETTING THE LIST OF THE ITEMS
 function listCart() {
+  return [...cart]
   //listCart() -- return array of items
-  var cartCopy = [];
+/*  var cartCopy = [];
   for (var i in cart) {
     var item = cart[i];
     var itemCopy = {};
@@ -108,7 +137,7 @@ function listCart() {
       }
     cartCopy.push(itemCopy);
   }
-  return cartCopy 
+  return cartCopy    */ 
   //return cart.slice(); -- changes made to this will affect the original cart
 }
 
@@ -127,3 +156,4 @@ loadCart();
 
 var array = listCart();
 console.log('array',array);
+
