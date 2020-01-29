@@ -9,8 +9,10 @@ $(".add-to-cart").click(function (event) {
     displayCart();
 });
 
+
 function displayCart() {
   var cartArray = listCart();
+  console.log('***Count Cart*** :', + cartArray.length);
   var output = "";
   for (var i in cartArray) {
     output += "<li>" + cartArray[i].name + " " + cartArray[i].count + "</li>"
@@ -153,7 +155,9 @@ function loadCart() {
 }
 
 loadCart();
-
+displayCart()
+console.log('---------');
 var array = listCart();
-console.log('array',array);
 
+
+console.log('array',array);
