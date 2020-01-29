@@ -41,10 +41,6 @@ function addItemToCart(name, price, count) {
   saveCart();
 }
 
-
-
-
-
 // REMOVING ITEM FROM CART ONE AT A TIME
 function removeItemFromCart(name) {
   //removes one item of a particular name
@@ -72,38 +68,12 @@ function removeItemFromCartAll(name) {
   saveCart();
 }
 
-addItemToCart('Apple', 1, 1);
-addItemToCart('Pear', 1, 1)
-addItemToCart('Apple', 1, 1);
-addItemToCart('Apple', 1, 3);
-addItemToCart('Pear', 1, 1)
-addItemToCart('Banana', 5, 1);
-addItemToCart('car', 3, 3);
-addItemToCart('Plush Toy', 5, 1)
-addItemToCart('Apple', 1, 1);
-addItemToCart('sticky notes', 5, 1);
-
-console.log(cart.length);
-console.log(cart);
-
-removeItemFromCartAll('car')
-
-console.log(cart.length);
-console.log(cart);
-
-
 // CLEARING ALL ITEMS FROM THE CART
 function clearCart() {
 // clears all the items from the cart
   cart = [];  
   saveCart();
 }
-
-//clearCart();
-
-console.log(cart.length);
-console.log(cart);
-
 
 // COUNTING THE TOTAL ITEMS IN THE CART
 function countCart() {
@@ -115,7 +85,6 @@ function countCart() {
   return totalCount;
 }
 
-console.log(countCart());
 
 // GETTING THE TOTAL COST
 function totalCart() {
@@ -127,10 +96,7 @@ function totalCart() {
   return totalCost;
 }
 
-console.log(countCart());
-console.log(totalCart());
-
-
+// GETTING THE LIST OF THE ITEMS
 function listCart() {
   //listCart() -- return array of items
   var cartCopy = [];
@@ -146,40 +112,18 @@ function listCart() {
   //return cart.slice(); -- changes made to this will affect the original cart
 }
 
-/* ****************
-Reference types in javascript
-
-var array = listCart();
-array[0].name = 'Mistake';
-console.log(array)
-
-*/
-
-
-/* Reference types in javascript
-// some notes here
-var a = ['A','B','C'];
-var b = a
-b.push('D')
-console.log('a',a); 
-console.log('b',b);
-
-
-var a = ['A','B','C'];
-var b = a.slice()
-b.push('D')
-console.log('a',a); 
-console.log('b',b);
-
-var a = { age: 22, name: 'joe'};
-var b = a;
-b.name = 'cindy';
-console.log('a ', a);
-console.log('b ', b)
-
-*/
 // SAVING TO THE LOCAL STORAGE
 function saveCart() {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
-// loadCart()
+
+// LOADING FROM THE LOCAL STORAGE
+function loadCart() {
+  cart = JSON.parse(localStorage.getItem("shoppingCart"));
+  //console.log(cart);
+}
+
+loadCart();
+
+var array = listCart();
+console.log('array',array);
