@@ -38,6 +38,7 @@ function addItemToCart(name, price, count) {
   }
   var item = new Item(name, price, count)
   cart.push(item);
+  saveCart();
 }
 
 
@@ -56,6 +57,7 @@ function removeItemFromCart(name) {
       return;
     }
   }
+  saveCart();
 } 
 
 // REMOVING ALL ITEM OF A PARTICULAR NAME FROM THE CART 
@@ -67,6 +69,7 @@ function removeItemFromCartAll(name) {
       return;
     }
   }
+  saveCart();
 }
 
 addItemToCart('Apple', 1, 1);
@@ -93,6 +96,7 @@ console.log(cart);
 function clearCart() {
 // clears all the items from the cart
   cart = [];  
+  saveCart();
 }
 
 //clearCart();
@@ -138,14 +142,18 @@ function listCart() {
       }
     cartCopy.push(itemCopy);
   }
-  //return cartCopy
-  return cart.slice();
+  return cartCopy 
+  //return cart.slice(); -- changes made to this will affect the original cart
 }
 
-// ****************
+/* ****************
+Reference types in javascript
+
 var array = listCart();
 array[0].name = 'Mistake';
 console.log(array)
+
+*/
 
 
 /* Reference types in javascript
@@ -170,6 +178,8 @@ console.log('a ', a);
 console.log('b ', b)
 
 */
-
-// saveCart()
+// SAVING TO THE LOCAL STORAGE
+function saveCart() {
+  localStorage.setItem("shoppingCart", JSON.stringify(cart));
+}
 // loadCart()
