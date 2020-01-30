@@ -23,7 +23,9 @@ function displayCart() {
                                 + cartArray[i].name 
                                 + " " + cartArray[i].count 
                                 + " x "+ cartArray[i].price 
-                                + " = " + cartArray[i].total 
+                                + " = " + cartArray[i].total
+                                + " <button class = 'plus-item' data-name='"+cartArray[i].name+"'>+</button> " 
+                                + " <button class = 'subtract-item' data-name='"+cartArray[i].name+"'>-</button> "
                                 + " <button class = 'delete-item' data-name='"+cartArray[i].name+"'>X</button> "
                                 + "</li>"
   }
@@ -36,7 +38,16 @@ $("#show-cart").on("click",".delete-item", function(event) {
         removeItemFromCartAll(name);
         displayCart();
 });
-
+$("#show-cart").on("click",".subtract-item", function(event) {
+        var name = $(this).attr("data-name");
+        removeItemFromCart(name);
+        displayCart();
+})
+$("#show-cart").on("click",".plus-item", function(event) {
+        var name = $(this).attr("data-name");
+        addItemToCart(name, 0, 1);
+        displayCart();
+})
 
 
 
@@ -150,7 +161,7 @@ function listCart() {
       for (var p in item) {
         itemCopy[p] = item[p];
       }
-      itemCopy.total = (item.price * item.count.toFixed());
+      itemCopy.total = (item.price * item.count).toFixed(2);
     cartCopy.push(itemCopy);
   }
   return cartCopy 
