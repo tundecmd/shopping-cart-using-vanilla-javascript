@@ -1,3 +1,24 @@
+var obj = {};
+var name = "Joe";
+obj.age = 33;
+obj.doSomething = function (thing, count){
+  
+};
+
+var WD_shoppingCart = {};
+WD_shoppingCart.cart = [];
+WD_shoppingCart.Item = function() {};
+WD_shoppingCart.addItemToCart = function(){};
+
+
+
+
+
+
+
+
+
+
 //******************
 // JQUERY
 $(".add-to-cart").click(function (event) {
