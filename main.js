@@ -19,12 +19,23 @@ function displayCart() {
   console.log('from displayCart',cartArray);
   var output = "";
   for (var i in cartArray) {
-    output += "<li>" + cartArray[i].name + " " + cartArray[i].count + " x "+ cartArray[i].price + " = " + cartArray[i].total + "</li>"
+                      output += "<li>" 
+                                + cartArray[i].name 
+                                + " " + cartArray[i].count 
+                                + " x "+ cartArray[i].price 
+                                + " = " + cartArray[i].total 
+                                + " <button class = 'delete-item' data-name='"+cartArray[i].name+"'>X</button> "
+                                + "</li>"
   }
   $("#show-cart").html(output);
   $("#total-cart").html(totalCart());
 }
-
+$("#show-cart").on("click",".delete-item", function(event) {
+  
+        var name = $(this).attr("data-name");
+        removeItemFromCartAll(name);
+        displayCart();
+});
 
 
 
