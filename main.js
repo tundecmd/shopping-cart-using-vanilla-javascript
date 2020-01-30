@@ -9,12 +9,17 @@ $(".add-to-cart").click(function (event) {
     displayCart();
 });
 
+$("#clear-cart").click(function(event){
+  clearCart();
+  displayCart();
+})
 
 function displayCart() {
   var cartArray = listCart();
+  console.log('from displayCart',cartArray);
   var output = "";
   for (var i in cartArray) {
-    output += "<li>" + cartArray[i].name + " " + cartArray[i].count + "</li>"
+    output += "<li>" + cartArray[i].name + " " + cartArray[i].count + " x "+ cartArray[i].price + " = " + cartArray[i].total + "</li>"
   }
   $("#show-cart").html(output);
   $("#total-cart").html(totalCart());
@@ -121,23 +126,23 @@ function totalCart() {
   for (var i in cart) {
     totalCost += cart[i].price * cart[i].count;
   }
-  return totalCost;
+  return totalCost.toFixed(2);
 }
 
 // GETTING THE LIST OF THE ITEMS
 function listCart() {
-  return [...cart]
   //listCart() -- return array of items
-/*  var cartCopy = [];
+ var cartCopy = [];
   for (var i in cart) {
     var item = cart[i];
     var itemCopy = {};
-      for (var p in itemCopy) {
+      for (var p in item) {
         itemCopy[p] = item[p];
       }
+      itemCopy.total = (item.price * item.count.toFixed());
     cartCopy.push(itemCopy);
   }
-  return cartCopy    */ 
+  return cartCopy 
   //return cart.slice(); -- changes made to this will affect the original cart
 }
 
