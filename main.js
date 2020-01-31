@@ -12,19 +12,7 @@ WD_shoppingCart.addItemToCart = function(){};
 
 
 
-class ShoppingCart {
-  constructor() {
-    this.addItemToCart = addItemToCart(),
-    this.removeItemFromCart = removeItemFromCart(),
-    this.removeItemFromCartAll = removeItemFromCartAll(),
-    this.clearCart = clearCart,
-    this.countCart = countCart,
-    this.totalCart = totalCart,
-    this.listCart = listCart,
-    this.saveCart = saveCart,
-    this.loadCart = loadCart
-  }
-}
+
 // Display Cart
 
 
@@ -45,7 +33,7 @@ $(".add-to-cart").click(function (event) {
     var name = $(this).attr("data-name");
     var price = Number($(this).attr("data-price"));
 
-    addItemToCart(name, price, 1)
+    shoppingCart.addItemToCart(name, price, 1)
     displayCart();
 });
 
@@ -55,7 +43,7 @@ $("#clear-cart").click(function(event){
 })
 
 function displayCart() {
-  var cartArray = listCart();
+  var cartArray = shoppingCart.listCart();
   console.log('from displayCart',cartArray);
   var output = "";
   for (var i in cartArray) {
@@ -70,22 +58,22 @@ function displayCart() {
                                 + "</li>"
   }
   $("#show-cart").html(output);
-  $("#total-cart").html(totalCart());
+  $("#total-cart").html(shoppingCart.totalCart());
 }
 $("#show-cart").on("click",".delete-item", function(event) {
   
         var name = $(this).attr("data-name");
-        removeItemFromCartAll(name);
+        shoppingCart.removeItemFromCartAll(name);
         displayCart();
 });
 $("#show-cart").on("click",".subtract-item", function(event) {
         var name = $(this).attr("data-name");
-        removeItemFromCart(name);
+        shoppingCart.removeItemFromCart(name);
         displayCart();
 })
 $("#show-cart").on("click",".plus-item", function(event) {
         var name = $(this).attr("data-name");
-        addItemToCart(name, 0, 1);
+        shoppingCart.addItemToCart(name, 0, 1);
         displayCart();
 })
 
@@ -130,13 +118,13 @@ shoppingCart.addItemToCart = function(name, price, count) {
   for (var i in cart) {
     if ( cart[i].name === name ) {
         cart[i].count += count;
-        saveCart();
+        this.saveCart();
         return;
     }
   }
-  var item = new Item(name, price, count)
+  var item = new this.Item(name, price, count)
   cart.push(item);
-  saveCart();
+  this.saveCart();
 }
 // REMOVING ITEM FROM CART ONE AT A TIME
 shoppingCart.removeItemFromCart = function(name) {
@@ -150,7 +138,7 @@ shoppingCart.removeItemFromCart = function(name) {
       return;
     }
   }
-  saveCart();
+  shoppingCart.saveCart();
 } 
 // REMOVING ALL ITEM OF A PARTICULAR NAME FROM THE CART 
 shoppingCart.removeItemFromCartAll = function (name) {
@@ -161,13 +149,13 @@ shoppingCart.removeItemFromCartAll = function (name) {
         return;
       }
     }
-    saveCart();
+    shoppingCart.saveCart();
   }
   // CLEARING ALL ITEMS FROM THE CART
 shoppingCart.clearCart = function() {
   // clears all the items from the cart
     cart = [];  
-    saveCart();
+    shoppingCart.saveCart();
   }
   // COUNTING THE TOTAL ITEMS IN THE CART
 shoppingCart.countCart = function() {
@@ -205,8 +193,7 @@ shoppingCart.totalCart = function() {
 }
 
 // SAVING TO THE LOCAL STORAGE
-shoppingCart
-.saveCart = function() {
+shoppingCart.saveCart = function() {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
 
@@ -220,13 +207,13 @@ shoppingCart.loadCart = function() {
 // Item : Object/ class
 
 // addItemToCart : function
-// removeItemFromCart : function
+//removeItemFromCart : function
 // removeItemFromCartAll: function
 // clearCart: function
 // countCart: function
 // totalCart: function
 // listCart: function
-// saveCart:function
+// shoppingCart.saveCart:function
 // loadCart: function
 
 
@@ -246,7 +233,7 @@ shoppingCart.loadCart = function() {
 
 
 shoppingCart.loadCart();
-shoppingCart.displayCart()
+displayCart()
 console.log('---------');
 var array = shoppingCart.listCart();
 
